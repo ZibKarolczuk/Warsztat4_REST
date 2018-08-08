@@ -25,9 +25,9 @@ $(document).ready(function () {
     });
 
 
-    $("#test-test table tbody tr td").click(function (e) {
-        var clicked = $(e.target).closest("td");
-        console.log(clicked);
+//    $("#test-test table tbody tr td").click(function (e) {
+    $("#test-test").on("click", "td", function () {
+//        console.log($(this).text());
     });
 
 
@@ -165,7 +165,7 @@ $(document).ready(function () {
     function renderIdList(renderingPointIDs, books) {
         renderingPointIDs.empty();
 
-        var rows = 15;
+        var rows = 9;
         var idTable = $("<table>");
         idTable.attr("class", "table table-bordered");
         idTable.append("<thead></thead>");
@@ -175,12 +175,12 @@ $(document).ready(function () {
         for (var i = 0; i < books.length; i++) {
             if ((i + 1) % rows === 1) {
                 idRow = $("<tr>");
-                idRow.append("<td>" + books[i].id + "</td>");
+                idRow.append("<td data-id=\"" + books[i].id + "\">" + books[i].title + "</td>");
             } else if ((i + 1) % rows === 0) {
-                idRow.append("<td>" + books[i].id + "</td>");
+                idRow.append("<td data-id=\"" + books[i].id + "\">" + books[i].title + "</td>");
                 idTbody.append(idRow);
             } else {
-                idRow.append("<td>" + books[i].id + "</td>");
+                idRow.append("<td data-id=\"" + books[i].id + "\">" + books[i].title + "</td>");
                 if ((i + 1) === books.length) {
                     idTbody.append(idRow);
                 }
